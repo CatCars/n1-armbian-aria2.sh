@@ -185,7 +185,7 @@ Install_aria2(){
 	Add_iptables
 	echo -e "${Info} 开始保存 iptables防火墙规则..."
 	Save_iptables
-	echo -e "${Info} 所有步骤 安装完毕，开始启动...（还需要手运行一遍‘apt-get install aria2’命令覆盖安装才能正常启动）"
+	echo -e "${Info} 所有步骤 安装完毕，开始启动...（还需要手运行一遍‘apt install aria2’命令覆盖安装才能正常启动）"
 	Start_aria2
 }
 Start_aria2(){
@@ -531,7 +531,7 @@ Uninstall_aria2(){
 			update-rc.d -f aria2 remove
 		fi
 		rm -rf "/etc/init.d/aria2"
-		echo && echo "Aria2 卸载完成 ! 需要再手运行一遍‘apt-get remove aria2’命令彻底卸载" && echo
+		echo && echo "Aria2 卸载完成 ! 需要再手运行一遍‘apt remove aria2’命令彻底卸载" && echo
 	else
 		echo && echo "卸载已取消..." && echo
 	fi
@@ -585,9 +585,9 @@ echo && echo -e " Aria2 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]$
   
  ${Green_font_prefix} 0.${Font_color_suffix} 升级脚本
 ————————————
- ${Green_font_prefix} 1.${Font_color_suffix} 安装 Aria2（命令执行完成后需要手运行一遍‘apt-get install aria2’命令覆盖安装才能正常启动）
+ ${Green_font_prefix} 1.${Font_color_suffix} 安装 Aria2（命令执行完成后需要手运行一遍‘apt install aria2’命令覆盖安装才能正常启动）
  ${Green_font_prefix} 2.${Font_color_suffix} 更新 Aria2（不要使用该命令）
- ${Green_font_prefix} 3.${Font_color_suffix} 卸载 Aria2（命令执行完成后需要手运行一遍‘apt-get remove aria2’命令彻底卸载）
+ ${Green_font_prefix} 3.${Font_color_suffix} 卸载 Aria2（命令执行完成后需要手运行一遍‘apt remove aria2’命令彻底卸载）
 ————————————
  ${Green_font_prefix} 4.${Font_color_suffix} 启动 Aria2
  ${Green_font_prefix} 5.${Font_color_suffix} 停止 Aria2
