@@ -579,7 +579,7 @@ echo && echo -e " Aria2 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]$
   -- Toyo | doub.io/shell-jc4 --
   -- 因二进制文件安装后无法正常运行，需要手动apt命令覆盖安装 --
   -- 首先确认当前软件源可以安装aria2，因为部分作者会改成速度更快的国内源，会但因为文件不全导致aria2安装失败 --
-  -- 推荐使用默认软件源避免不必要的bug，因该源在墙外速度很慢最好挂代理使用 --
+  -- 如果apt安装失败可改为默认软件源，因该源在墙外速度很慢最好挂代理使用 --
   -- 默认软件源‘deb http://deb.debian.org/debian stretch main’ --
 
   
