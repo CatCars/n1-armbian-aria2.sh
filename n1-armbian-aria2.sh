@@ -598,6 +598,7 @@ echo && echo -e " Aria2 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]$
  ${Green_font_prefix} 8.${Font_color_suffix} 查看 配置信息
  ${Green_font_prefix} 9.${Font_color_suffix} 查看 日志信息
  ${Green_font_prefix}10.${Font_color_suffix} 配置 自动更新 BT-Tracker服务器
+ -----需要先正常 安装或卸载 一边再运行以下命令------
  ${Green_font_prefix}11.${Font_color_suffix} apt覆盖安装aria2(解决N1莫名奇妙arm二进制安装后无法启动)
  ${Green_font_prefix}12.${Font_color_suffix} 卸载apt安装的aria2
 ————————————" && echo
