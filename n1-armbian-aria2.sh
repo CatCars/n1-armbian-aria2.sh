@@ -185,7 +185,7 @@ Install_aria2(){
 	Add_iptables
 	echo -e "${Info} 开始保存 iptables防火墙规则..."
 	Save_iptables
-	echo -e "${Info} 所有步骤 安装完毕，开始启动...（还需要手运行一遍‘apt install aria2’命令覆盖安装才能正常启动）"
+	echo -e "${Info} 所有步骤 安装完毕，开始启动..."
 	Start_aria2
 }
 Start_aria2(){
@@ -468,7 +468,7 @@ crontab_update_start(){
 	if [[ -z ${cron_config} ]]; then
 		echo -e "${Error} Aria2 自动更新 BT-Tracker服务器 开启失败 !" && exit 1
 	else
-		echo -e "${Info} Aria2 自动更新 BT-Tracker服务器 开启成功 !（自动安装有bug，请运行‘crontab -l’检查是否生效）"
+		echo -e "${Info} Aria2 自动更新 BT-Tracker服务器 开启成功 !"
 		Update_bt_tracker_cron
 	fi
 }
@@ -503,6 +503,12 @@ Update_aria2(){
 	check_new_ver
 	check_ver_comparison
 }
+aria2az(){
+	apt-get -y install aria2
+}
+aria2xz(){
+	apt remove aria2
+}
 Uninstall_aria2(){
 	check_installed_status "un"
 	echo "确定要卸载 Aria2 ? (y/N)"
@@ -531,7 +537,7 @@ Uninstall_aria2(){
 			update-rc.d -f aria2 remove
 		fi
 		rm -rf "/etc/init.d/aria2"
-		echo && echo "Aria2 卸载完成 ! 需要再手运行一遍‘apt remove aria2’命令彻底卸载" && echo
+		echo && echo "Aria2 卸载完成 !" && echo
 	else
 		echo && echo "卸载已取消..." && echo
 	fi
@@ -577,17 +583,12 @@ if [[ "${action}" == "update-bt-tracker" ]]; then
 else
 echo && echo -e " Aria2 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
   -- Toyo | doub.io/shell-jc4 --
-  -- 因二进制文件安装后无法正常运行，需要手动apt命令覆盖安装 --
-  -- 首先确认当前软件源可以安装aria2，因为部分作者会改成速度更快的国内源，会但因为文件不全导致aria2安装失败 --
-  -- 如果apt安装失败可改为默认软件源，因该源在墙外速度很慢最好挂代理使用 --
-  -- 默认软件源‘deb http://deb.debian.org/debian stretch main’ --
-
   
  ${Green_font_prefix} 0.${Font_color_suffix} 升级脚本
 ————————————
- ${Green_font_prefix} 1.${Font_color_suffix} 安装 Aria2（命令执行完成后需要手运行一遍‘apt install aria2’命令覆盖安装才能正常启动）
- ${Green_font_prefix} 2.${Font_color_suffix} 更新 Aria2（不要使用该命令）
- ${Green_font_prefix} 3.${Font_color_suffix} 卸载 Aria2（命令执行完成后需要手运行一遍‘apt remove aria2’命令彻底卸载）
+ ${Green_font_prefix} 1.${Font_color_suffix} 安装 Aria2
+ ${Green_font_prefix} 2.${Font_color_suffix} 更新 Aria2（apt安装的不要运行该命令，aria2版本跟软件源有关）
+ ${Green_font_prefix} 3.${Font_color_suffix} 卸载 Aria2
 ————————————
  ${Green_font_prefix} 4.${Font_color_suffix} 启动 Aria2
  ${Green_font_prefix} 5.${Font_color_suffix} 停止 Aria2
@@ -596,7 +597,9 @@ echo && echo -e " Aria2 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]$
  ${Green_font_prefix} 7.${Font_color_suffix} 修改 配置文件
  ${Green_font_prefix} 8.${Font_color_suffix} 查看 配置信息
  ${Green_font_prefix} 9.${Font_color_suffix} 查看 日志信息
- ${Green_font_prefix}10.${Font_color_suffix} 配置 自动更新 BT-Tracker服务器_有bug（推荐手动添加定时任务：运行‘crontab -e’然后添加一条‘0 3 * * 1 /bin/bash /root/aria2.sh update-bt-tracker’然后保存）
+ ${Green_font_prefix}10.${Font_color_suffix} 配置 自动更新 BT-Tracker服务器
+ ${Green_font_prefix}11.${Font_color_suffix} apt覆盖安装aria2(解决N1莫名奇妙arm二进制安装后无法启动)
+ ${Green_font_prefix}12.${Font_color_suffix} 卸载apt安装的aria2
 ————————————" && echo
 if [[ -e ${aria2c} ]]; then
 	check_pid
@@ -643,6 +646,12 @@ case "$num" in
 	;;
 	10)
 	Update_bt_tracker
+	;;
+	11)
+	aria2az
+	;;
+	12)
+	aria2xz
 	;;
 	*)
 	echo "请输入正确数字 [0-10]"
