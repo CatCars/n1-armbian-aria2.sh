@@ -581,16 +581,16 @@ action=$1
 if [[ "${action}" == "update-bt-tracker" ]]; then
 	Update_bt_tracker_cron
 else
-echo && echo -e " Aria2 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
+echo && echo -e " Aria2 一键安装管理脚本 n1二进制安装有问题，需要先正常安装一次再apt覆盖一次才能正常启动 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
   -- Toyo | doub.io/shell-jc4 --
   
  ${Green_font_prefix} 0.${Font_color_suffix} 升级脚本
 ————————————
- ${Green_font_prefix} 1.${Font_color_suffix} 安装 Aria2
+ ${Green_font_prefix} 1.${Font_color_suffix} 安装 Aria2 
  ${Green_font_prefix} 2.${Font_color_suffix} 更新 Aria2（apt安装的不要运行该命令，aria2版本跟软件源有关）
  ${Green_font_prefix} 3.${Font_color_suffix} 卸载 Aria2
 ————————————
- ${Green_font_prefix} 4.${Font_color_suffix} 启动 Aria2
+ ${Green_font_prefix} 4.${Font_color_suffix} 启动 Aria2（n1盒子需要执行11再覆盖安装一次才能正常启动）
  ${Green_font_prefix} 5.${Font_color_suffix} 停止 Aria2
  ${Green_font_prefix} 6.${Font_color_suffix} 重启 Aria2
 ————————————
@@ -598,8 +598,8 @@ echo && echo -e " Aria2 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]$
  ${Green_font_prefix} 8.${Font_color_suffix} 查看 配置信息
  ${Green_font_prefix} 9.${Font_color_suffix} 查看 日志信息
  ${Green_font_prefix}10.${Font_color_suffix} 配置 自动更新 BT-Tracker服务器
- -----需要先正常 安装或卸载 一边再运行以下命令------
- ${Green_font_prefix}11.${Font_color_suffix} apt覆盖安装aria2(解决N1莫名奇妙arm二进制安装后无法启动)
+ -----atp覆盖安装过得需要先正常 安装或卸载 一遍再运行以下命令------
+ ${Green_font_prefix}11.${Font_color_suffix} apt覆盖安装aria2
  ${Green_font_prefix}12.${Font_color_suffix} 卸载apt安装的aria2
 ————————————" && echo
 if [[ -e ${aria2c} ]]; then
