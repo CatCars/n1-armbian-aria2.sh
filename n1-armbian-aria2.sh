@@ -488,7 +488,7 @@ Update_bt_tracker_cron(){
 	check_installed_status
 	check_pid
 	[[ ! -z ${PID} ]] && /etc/init.d/aria2 stop
-	bt_tracker_list=$(wget -qO- https://trackerslist.com/all_aria2.txt |awk NF|sed ":a;N;s/\n/,/g;ta")
+	bt_tracker_list=$(wget -qO- https://trackerslist.com/all.txt |awk NF|sed ":a;N;s/\n/,/g;ta")
 	if [ -z "`grep "bt-tracker" ${aria2_conf}`" ]; then
 		sed -i '$a bt-tracker='${bt_tracker_list} "${aria2_conf}"
 		echo -e "${Info} 添加成功..."
